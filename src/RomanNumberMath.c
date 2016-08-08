@@ -55,3 +55,15 @@ RomanNumber newRomanNumber(char *number) {
    return returnValue;
 }
 
+uint32_t to_a(RomanNumber number) {
+   uint32_t returnValue;
+   int idx;
+
+   returnValue = 0;
+   for (idx = 0; idx < number.Size; idx++) {
+      RomanDigit digit = number.Digit[idx];
+      returnValue += digit.Value;
+   }
+
+   return returnValue;
+}

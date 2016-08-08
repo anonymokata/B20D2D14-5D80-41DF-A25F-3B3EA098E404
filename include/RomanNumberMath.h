@@ -1,3 +1,5 @@
+#include <stdint.h>
+
 #ifndef __ROMAN_MATH_2_H_
 #define __ROMAN_MATH_2_H_
 
@@ -13,5 +15,6 @@ typedef struct {
 
 RomanDigit newRomanDigit(char);
 RomanNumber newRomanNumber(char *);
+uint32_t to_a(RomanNumber);
 
 #endif

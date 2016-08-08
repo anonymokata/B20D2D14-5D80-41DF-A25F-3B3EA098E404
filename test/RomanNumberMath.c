@@ -182,9 +182,21 @@ START_TEST(initialize_a_value_with_complex_structure) {
    ck_assert_int_eq(rn.Digit[6].Value, 10);
 } END_TEST
 
+/*******************************************************************************
+ * Create a "toInt" function to return value of a Roman Number                 *
+ ******************************************************************************/
+
+/********* Create a "toInt" function to return value of a Roman Number ********/
+START_TEST(roman_numberal_to_a_function) {
+   RomanNumber rn = newRomanNumber("iiiiiii");
+   uint32_t value = to_a(rn);
+
+   ck_assert_int_eq(value, 7);
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
-   TCase *tc_roman_digit, *tc_roman_number;
+   TCase *tc_roman_digit, *tc_roman_number, *tc_debug;
 
    testSuite = suite_create("Roman Math 2");
 
@@ -213,6 +225,13 @@ Suite * roman_number_math_suite(void) {
    tcase_add_test(tc_roman_number, initialize_a_value_with_complex_structure);
 
    suite_add_tcase(testSuite, tc_roman_number);
+
+   /* Testing Debug/Display functions */
+   tc_debug = tcase_create("Debug");
+
+   tcase_add_test(tc_debug, roman_numberal_to_a_function);
+
+   suite_add_tcase(testSuite, tc_debug);
 
    return testSuite;
 }
