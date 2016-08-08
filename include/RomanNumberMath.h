@@ -6,4 +6,6 @@ typedef struct {
       int Value;
 } RomanDigit;
 
+RomanDigit newRomanDigit(char);
+
 #endif
