@@ -118,6 +118,15 @@ START_TEST(create_data_structure_to_represent_a_roman_number) {
    ck_assert_int_eq(rn.Digit[0].Value, 1000);
 } END_TEST
 
+/***** Initialize a simple value then check the structure that comes back *****/
+START_TEST(initialize_roman_number_with_a_simple_single_digit_value) {
+   RomanNumber rn = newRomanNumber("I");
+
+   ck_assert_int_eq(rn.Size, 1);
+   ck_assert(rn.Digit[0].Symbol == 'I');
+   ck_assert_int_eq(rn.Digit[0].Value, 1);
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
    TCase *tc_roman_digit, *tc_roman_number;
@@ -143,6 +152,7 @@ Suite * roman_number_math_suite(void) {
    tc_roman_number = tcase_create("Roman Numbers");
 
    tcase_add_test(tc_roman_number, create_data_structure_to_represent_a_roman_number);
+   tcase_add_test(tc_roman_number, initialize_roman_number_with_a_simple_single_digit_value);
 
    suite_add_tcase(testSuite, tc_roman_number);
 

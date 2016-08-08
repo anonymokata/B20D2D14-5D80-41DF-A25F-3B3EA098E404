@@ -30,6 +30,23 @@ RomanDigit newRomanDigit(char c) {
    return rd;
 }
 
-int main (int argc, char *argv[]) {
-   exit(EXIT_SUCCESS);
+RomanNumber newRomanNumber(char *number) {
+   RomanNumber returnValue;
+   int idx;
+
+   for (idx = 0; number[idx] != '\0'; idx++) {
+      RomanDigit rd = newRomanDigit(number[idx]);
+
+      if (rd.Value == 0) {
+         returnValue.Size = 0;
+         returnValue.Digit[0] = rd;
+         return returnValue;
+      } else {
+         returnValue.Digit[returnValue.Size] = rd;
+         returnValue.Size++;
+      }
+   }
+
+   return returnValue;
 }
+

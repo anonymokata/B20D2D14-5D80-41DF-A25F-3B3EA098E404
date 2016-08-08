@@ -12,5 +12,6 @@ typedef struct {
 } RomanNumber;
 
 RomanDigit newRomanDigit(char);
+RomanNumber newRomanNumber(char *);
 
 #endif
