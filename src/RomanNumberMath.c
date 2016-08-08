@@ -79,3 +79,7 @@ char *to_string(RomanNumber number) {
 
    return returnValue;
 }
+
+void rnRemoveSubtractive(RomanNumber *number) {
+   return;
+}

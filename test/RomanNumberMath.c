@@ -257,9 +257,24 @@ START_TEST(roman_numberal_to_string_with_complex_value) {
    ck_assert_str_eq("MCMXCIX", to_string(newRomanNumber("mcmxcix")));
 } END_TEST
 
+/*******************************************************************************
+ * Substitute for any subtractives in value                                    *
+ ******************************************************************************/
+
+START_TEST(substitute_for_any_subtractives_in_value) {
+   RomanNumber rn = newRomanNumber("MDCLXVI");
+   char *before, *after;
+
+   before = to_string(rn);
+   rnRemoveSubtractive(&rn);
+   after = to_string(rn);
+
+   ck_assert_str_eq(before, after);
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
-   TCase *tc_roman_digit, *tc_roman_number, *tc_debug;
+   TCase *tc_roman_digit, *tc_roman_number, *tc_debug, *tc_remove_sub;
 
    testSuite = suite_create("Roman Math 2");
 
@@ -305,6 +320,13 @@ Suite * roman_number_math_suite(void) {
    tcase_add_test(tc_debug, roman_numberal_to_string_with_complex_value);
 
    suite_add_tcase(testSuite, tc_debug);
+
+   /* Testing Debug/Display functions */
+   tc_remove_sub = tcase_create("Remove Subtractive Notation");
+
+   tcase_add_test(tc_remove_sub, substitute_for_any_subtractives_in_value);
+   
+   suite_add_tcase(testSuite, tc_remove_sub);
 
    return testSuite;
 }
