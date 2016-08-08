@@ -49,6 +49,17 @@ START_TEST(initialize_roman_digit_with_x_or_X_returns_symbol_X_value_10) {
    ck_assert_int_eq(rd2.Value, 10);
 } END_TEST
 
+/******** Character of "l" or "L" should have symbol "L" and value of 50 ******/
+START_TEST(initialize_roman_digit_with_l_or_L_returns_symbol_L_value_50) {
+   RomanDigit rd1 = newRomanDigit('l');
+   RomanDigit rd2 = newRomanDigit('L');
+
+   ck_assert(rd1.Symbol == 'L');
+   ck_assert(rd2.Symbol == 'L');
+   ck_assert_int_eq(rd1.Value, 50);
+   ck_assert_int_eq(rd2.Value, 50);
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
    TCase *tc_roman_digit;
@@ -62,6 +73,7 @@ Suite * roman_number_math_suite(void) {
    tcase_add_test(tc_roman_digit, initialize_roman_digit_with_i_or_I_returns_symbol_I_value_1);
    tcase_add_test(tc_roman_digit, initialize_roman_digit_with_v_or_V_returns_symbol_V_value_5);
    tcase_add_test(tc_roman_digit, initialize_roman_digit_with_x_or_X_returns_symbol_X_value_10);
+   tcase_add_test(tc_roman_digit, initialize_roman_digit_with_l_or_L_returns_symbol_L_value_50);
 
    suite_add_tcase(testSuite, tc_roman_digit);
 
