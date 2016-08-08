@@ -93,6 +93,14 @@ START_TEST(initialize_roman_digit_with_m_or_M_returns_symbol_M_value_1000) {
    ck_assert_int_eq(rd2.Value, 1000);
 } END_TEST
 
+/*********** Test to insure values other than IVXLCD or M will fail ***********/
+START_TEST(initialize_roman_digit_with_invalid_value_returns_symbol_Null_value_0) {
+   RomanDigit rd1 = newRomanDigit('A');
+
+   ck_assert(rd1.Symbol == 'N');
+   ck_assert_int_eq(rd1.Value, 0);
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
    TCase *tc_roman_digit;
@@ -110,6 +118,7 @@ Suite * roman_number_math_suite(void) {
    tcase_add_test(tc_roman_digit, initialize_roman_digit_with_c_or_C_returns_symbol_C_value_100);
    tcase_add_test(tc_roman_digit, initialize_roman_digit_with_d_or_D_returns_symbol_D_value_500);
    tcase_add_test(tc_roman_digit, initialize_roman_digit_with_m_or_M_returns_symbol_M_value_1000);
+   tcase_add_test(tc_roman_digit, initialize_roman_digit_with_invalid_value_returns_symbol_Null_value_0);
 
    suite_add_tcase(testSuite, tc_roman_digit);
 
