@@ -38,6 +38,17 @@ START_TEST(initialize_roman_digit_with_v_or_V_returns_symbol_V_value_5) {
    ck_assert_int_eq(rd2.Value, 5);
 } END_TEST
 
+/******** Character of "x" or "X" should have symbol "X" and value of 10 ******/
+START_TEST(initialize_roman_digit_with_x_or_X_returns_symbol_X_value_10) {
+   RomanDigit rd1 = newRomanDigit('x');
+   RomanDigit rd2 = newRomanDigit('X');
+
+   ck_assert(rd1.Symbol == 'X');
+   ck_assert(rd2.Symbol == 'X');
+   ck_assert_int_eq(rd1.Value, 10);
+   ck_assert_int_eq(rd2.Value, 10);
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
    TCase *tc_roman_digit;
@@ -50,6 +61,7 @@ Suite * roman_number_math_suite(void) {
    tcase_add_test(tc_roman_digit, create_data_structure_to_represent_a_roman_digit);
    tcase_add_test(tc_roman_digit, initialize_roman_digit_with_i_or_I_returns_symbol_I_value_1);
    tcase_add_test(tc_roman_digit, initialize_roman_digit_with_v_or_V_returns_symbol_V_value_5);
+   tcase_add_test(tc_roman_digit, initialize_roman_digit_with_x_or_X_returns_symbol_X_value_10);
 
    suite_add_tcase(testSuite, tc_roman_digit);
 
