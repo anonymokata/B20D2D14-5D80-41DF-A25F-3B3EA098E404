@@ -237,6 +237,11 @@ START_TEST(roman_numberal_to_string_function) {
    ck_assert_str_eq("IIIIIII", to_string(rn));
 } END_TEST
 
+/* Testing "to_string()" with single digit value */
+START_TEST(roman_numberal_to_string_single_digit) {
+   ck_assert_str_eq("I", to_string(newRomanNumber("i")));
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
    TCase *tc_roman_digit, *tc_roman_number, *tc_debug;
@@ -279,6 +284,7 @@ Suite * roman_number_math_suite(void) {
    tcase_add_test(tc_debug, roman_number_MCMXCIX_should_have_value_1999);
 
    tcase_add_test(tc_debug, roman_numberal_to_string_function);
+   tcase_add_test(tc_debug, roman_numberal_to_string_single_digit);
 
    suite_add_tcase(testSuite, tc_debug);
 
