@@ -4,14 +4,15 @@
 
 #include "RomanNumberMath.h"
 
-#define NUMDIGITS 5
+#define NUMDIGITS 6
 
 RomanDigit allowedDigits[NUMDIGITS] = {
    {'I', 1},
    {'V', 5},
    {'X', 10},
    {'L', 50},
-   {'C', 100}
+   {'C', 100},
+   {'D', 500},
 };
 
 RomanDigit newRomanDigit(char c) {

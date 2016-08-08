@@ -71,6 +71,17 @@ START_TEST(initialize_roman_digit_with_c_or_C_returns_symbol_C_value_100) {
    ck_assert_int_eq(rd2.Value, 100);
 } END_TEST
 
+/******* Character of "d" or "D" should have symbol "D" and value of 500 ******/
+START_TEST(initialize_roman_digit_with_d_or_D_returns_symbol_D_value_500) {
+   RomanDigit rd1 = newRomanDigit('d');
+   RomanDigit rd2 = newRomanDigit('D');
+
+   ck_assert(rd1.Symbol == 'D');
+   ck_assert(rd2.Symbol == 'D');
+   ck_assert_int_eq(rd1.Value, 500);
+   ck_assert_int_eq(rd2.Value, 500);
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
    TCase *tc_roman_digit;
@@ -86,6 +97,7 @@ Suite * roman_number_math_suite(void) {
    tcase_add_test(tc_roman_digit, initialize_roman_digit_with_x_or_X_returns_symbol_X_value_10);
    tcase_add_test(tc_roman_digit, initialize_roman_digit_with_l_or_L_returns_symbol_L_value_50);
    tcase_add_test(tc_roman_digit, initialize_roman_digit_with_c_or_C_returns_symbol_C_value_100);
+   tcase_add_test(tc_roman_digit, initialize_roman_digit_with_d_or_D_returns_symbol_D_value_500);
 
    suite_add_tcase(testSuite, tc_roman_digit);
 
