@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <ctype.h>
 
 #include "RomanNumberMath.h"
@@ -64,6 +65,17 @@ uint32_t to_a(RomanNumber number) {
       RomanDigit digit = number.Digit[idx];
       returnValue += digit.Value;
    }
+
+   return returnValue;
+}
+
+char *to_string(RomanNumber number) {
+   char *returnValue = (char *)malloc((number.Size+1) * sizeof(char));
+   int idx;
+
+   returnValue[number.Size] = '\0';
+   for (idx = 0; idx < number.Size; idx++)
+      returnValue[idx] = number.Digit[idx].Symbol;
 
    return returnValue;
 }

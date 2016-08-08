@@ -16,5 +16,6 @@ typedef struct {
 RomanDigit newRomanDigit(char);
 RomanNumber newRomanNumber(char *);
 uint32_t to_a(RomanNumber);
+char *to_string(RomanNumber);
 
 #endif

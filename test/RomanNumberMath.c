@@ -226,6 +226,17 @@ START_TEST(roman_number_MCMXCIX_should_have_value_1999) {
    ck_assert_int_eq(value, 1999);
 } END_TEST
 
+/*******************************************************************************
+ * Create a "toString" function to return the the string form of Roman Number  *
+ ******************************************************************************/
+
+/* Create a "toString" function to return the the string form of Roman Number */
+START_TEST(roman_numberal_to_string_function) {
+   RomanNumber rn = newRomanNumber("iiiiiii");
+
+   ck_assert_str_eq("IIIIIII", to_string(rn));
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
    TCase *tc_roman_digit, *tc_roman_number, *tc_debug;
@@ -266,6 +277,8 @@ Suite * roman_number_math_suite(void) {
    tcase_add_test(tc_debug, roman_number_VI_should_have_value_6);
    tcase_add_test(tc_debug, roman_number_XIX_should_have_value_19);
    tcase_add_test(tc_debug, roman_number_MCMXCIX_should_have_value_1999);
+
+   tcase_add_test(tc_debug, roman_numberal_to_string_function);
 
    suite_add_tcase(testSuite, tc_debug);
 
