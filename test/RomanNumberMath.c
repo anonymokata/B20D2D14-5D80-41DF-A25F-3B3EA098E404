@@ -138,6 +138,22 @@ START_TEST(initialize_roman_number_with_a_simple_two_digit_value) {
    ck_assert_int_eq(rn.Digit[1].Value, 1);
 } END_TEST
 
+/***************** Initialize a value with subtractive digits *****************/
+START_TEST(initialize_a_value_with_subtractive_digits) {
+   RomanNumber rn = newRomanNumber("XIX");
+
+   ck_assert_int_eq(rn.Size, 3);
+
+   ck_assert(rn.Digit[0].Symbol == 'X');
+   ck_assert_int_eq(rn.Digit[0].Value, 10);
+
+   ck_assert(rn.Digit[1].Symbol == 'I');
+   ck_assert_int_eq(rn.Digit[1].Value, -1);
+
+   ck_assert(rn.Digit[2].Symbol == 'X');
+   ck_assert_int_eq(rn.Digit[2].Value, 10);
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
    TCase *tc_roman_digit, *tc_roman_number;
@@ -165,6 +181,8 @@ Suite * roman_number_math_suite(void) {
    tcase_add_test(tc_roman_number, create_data_structure_to_represent_a_roman_number);
    tcase_add_test(tc_roman_number, initialize_roman_number_with_a_simple_single_digit_value);
    tcase_add_test(tc_roman_number, initialize_roman_number_with_a_simple_two_digit_value);
+   tcase_add_test(tc_roman_number, initialize_a_value_with_subtractive_digits);
+
    suite_add_tcase(testSuite, tc_roman_number);
 
    return testSuite;

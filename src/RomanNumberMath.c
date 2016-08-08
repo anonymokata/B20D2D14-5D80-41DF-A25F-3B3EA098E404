@@ -43,6 +43,11 @@ RomanNumber newRomanNumber(char *number) {
          return returnValue;
       } else {
          returnValue.Digit[returnValue.Size] = rd;
+
+         if (returnValue.Size > 0)
+            if (returnValue.Digit[returnValue.Size].Value > returnValue.Digit[returnValue.Size-1].Value)
+               returnValue.Digit[returnValue.Size-1].Value *= -1;
+
          returnValue.Size++;
       }
    }
