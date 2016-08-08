@@ -101,9 +101,26 @@ START_TEST(initialize_roman_digit_with_invalid_value_returns_symbol_Null_value_0
    ck_assert_int_eq(rd1.Value, 0);
 } END_TEST
 
+/*******************************************************************************
+ * Create Data Structure to Represent a Roman Number                           *
+ ******************************************************************************/
+
+/************** Create Data Structure to Represent a Roman Number *************/
+START_TEST(create_data_structure_to_represent_a_roman_number) {
+   RomanDigit rd = newRomanDigit('M');
+   RomanNumber rn;
+  
+   rn.Size = 1;
+   rn.Digit[0] = rd;
+
+   ck_assert_int_eq(rn.Size, 1);
+   ck_assert(rn.Digit[0].Symbol == 'M');
+   ck_assert_int_eq(rn.Digit[0].Value, 1000);
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
-   TCase *tc_roman_digit;
+   TCase *tc_roman_digit, *tc_roman_number;
 
    testSuite = suite_create("Roman Math 2");
 
@@ -121,6 +138,13 @@ Suite * roman_number_math_suite(void) {
    tcase_add_test(tc_roman_digit, initialize_roman_digit_with_invalid_value_returns_symbol_Null_value_0);
 
    suite_add_tcase(testSuite, tc_roman_digit);
+
+   /* Testing Creating of Roman Digits */
+   tc_roman_number = tcase_create("Roman Numbers");
+
+   tcase_add_test(tc_roman_number, create_data_structure_to_represent_a_roman_number);
+
+   suite_add_tcase(testSuite, tc_roman_number);
 
    return testSuite;
 }
