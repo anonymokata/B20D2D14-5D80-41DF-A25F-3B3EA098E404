@@ -195,11 +195,19 @@ START_TEST(roman_numberal_to_a_function) {
 } END_TEST
 
 /******** Create a number from the string "I" -> toInt should return 1 ********/
-START_TEST(roman_nmber_I_should_have_value_1) {
+START_TEST(roman_number_I_should_have_value_1) {
    RomanNumber rn = newRomanNumber("I");
    uint32_t value = to_a(rn);
 
    ck_assert_int_eq(value, 1);
+} END_TEST
+
+/******** Create a number from the string "VI" -> toInt should return 6 *******/
+START_TEST(roman_number_VI_should_have_value_6) {
+   RomanNumber rn = newRomanNumber("VI");
+   uint32_t value = to_a(rn);
+
+   ck_assert_int_eq(value, 6);
 } END_TEST
 
 Suite * roman_number_math_suite(void) {
@@ -238,7 +246,8 @@ Suite * roman_number_math_suite(void) {
    tc_debug = tcase_create("Debug");
 
    tcase_add_test(tc_debug, roman_numberal_to_a_function);
-   tcase_add_test(tc_debug, roman_nmber_I_should_have_value_1);
+   tcase_add_test(tc_debug, roman_number_I_should_have_value_1);
+   tcase_add_test(tc_debug, roman_number_VI_should_have_value_6);
 
    suite_add_tcase(testSuite, tc_debug);
 
