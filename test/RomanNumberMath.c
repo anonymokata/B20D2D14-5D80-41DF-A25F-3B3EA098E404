@@ -218,6 +218,14 @@ START_TEST(roman_number_XIX_should_have_value_19) {
    ck_assert_int_eq(value, 19);
 } END_TEST
 
+/**** Create a number from the string "MCMXCIX" -> toInt should return 1999 ***/
+START_TEST(roman_number_MCMXCIX_should_have_value_1999) {
+   RomanNumber rn = newRomanNumber("MCMXCIX");
+   uint32_t value = to_a(rn);
+
+   ck_assert_int_eq(value, 1999);
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
    TCase *tc_roman_digit, *tc_roman_number, *tc_debug;
@@ -257,6 +265,7 @@ Suite * roman_number_math_suite(void) {
    tcase_add_test(tc_debug, roman_number_I_should_have_value_1);
    tcase_add_test(tc_debug, roman_number_VI_should_have_value_6);
    tcase_add_test(tc_debug, roman_number_XIX_should_have_value_19);
+   tcase_add_test(tc_debug, roman_number_MCMXCIX_should_have_value_1999);
 
    suite_add_tcase(testSuite, tc_debug);
 
