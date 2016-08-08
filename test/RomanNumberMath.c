@@ -60,7 +60,7 @@ START_TEST(initialize_roman_digit_with_l_or_L_returns_symbol_L_value_50) {
    ck_assert_int_eq(rd2.Value, 50);
 } END_TEST
 
-/******** Character of "c" or "C" should have symbol "C" and value of 10 ******/
+/******* Character of "c" or "C" should have symbol "C" and value of 100 ******/
 START_TEST(initialize_roman_digit_with_c_or_C_returns_symbol_C_value_100) {
    RomanDigit rd1 = newRomanDigit('c');
    RomanDigit rd2 = newRomanDigit('C');
@@ -82,6 +82,17 @@ START_TEST(initialize_roman_digit_with_d_or_D_returns_symbol_D_value_500) {
    ck_assert_int_eq(rd2.Value, 500);
 } END_TEST
 
+/****** Character of "m" or "M" should have symbol "M" and value of 1000 ******/
+START_TEST(initialize_roman_digit_with_m_or_M_returns_symbol_M_value_1000) {
+   RomanDigit rd1 = newRomanDigit('m');
+   RomanDigit rd2 = newRomanDigit('M');
+
+   ck_assert(rd1.Symbol == 'M');
+   ck_assert(rd2.Symbol == 'M');
+   ck_assert_int_eq(rd1.Value, 1000);
+   ck_assert_int_eq(rd2.Value, 1000);
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
    TCase *tc_roman_digit;
@@ -98,6 +109,7 @@ Suite * roman_number_math_suite(void) {
    tcase_add_test(tc_roman_digit, initialize_roman_digit_with_l_or_L_returns_symbol_L_value_50);
    tcase_add_test(tc_roman_digit, initialize_roman_digit_with_c_or_C_returns_symbol_C_value_100);
    tcase_add_test(tc_roman_digit, initialize_roman_digit_with_d_or_D_returns_symbol_D_value_500);
+   tcase_add_test(tc_roman_digit, initialize_roman_digit_with_m_or_M_returns_symbol_M_value_1000);
 
    suite_add_tcase(testSuite, tc_roman_digit);
 
