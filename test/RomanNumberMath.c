@@ -247,6 +247,11 @@ START_TEST(roman_numberal_to_string_multi_digit) {
    ck_assert_str_eq("VI", to_string(newRomanNumber("vi")));
 } END_TEST
 
+/* Testing "to_string()" with subtractive notation value */
+START_TEST(roman_numberal_to_string_with_subtractive_notation) {
+   ck_assert_str_eq("XIX", to_string(newRomanNumber("xix")));
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
    TCase *tc_roman_digit, *tc_roman_number, *tc_debug;
@@ -291,6 +296,7 @@ Suite * roman_number_math_suite(void) {
    tcase_add_test(tc_debug, roman_numberal_to_string_function);
    tcase_add_test(tc_debug, roman_numberal_to_string_single_digit);
    tcase_add_test(tc_debug, roman_numberal_to_string_multi_digit);
+   tcase_add_test(tc_debug, roman_numberal_to_string_with_subtractive_notation);
 
    suite_add_tcase(testSuite, tc_debug);
 
