@@ -27,6 +27,17 @@ START_TEST(initialize_roman_digit_with_i_or_I_returns_symbol_I_value_1) {
    ck_assert_int_eq(rd2.Value, 1);
 } END_TEST
 
+/******** Character of "v" or "V" should have symbol "V" and value of 5 *******/
+START_TEST(initialize_roman_digit_with_v_or_V_returns_symbol_V_value_5) {
+   RomanDigit rd1 = newRomanDigit('v');
+   RomanDigit rd2 = newRomanDigit('V');
+
+   ck_assert(rd1.Symbol == 'V');
+   ck_assert(rd2.Symbol == 'V');
+   ck_assert_int_eq(rd1.Value, 5);
+   ck_assert_int_eq(rd2.Value, 5);
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
    TCase *tc_roman_digit;
@@ -38,6 +49,7 @@ Suite * roman_number_math_suite(void) {
 
    tcase_add_test(tc_roman_digit, create_data_structure_to_represent_a_roman_digit);
    tcase_add_test(tc_roman_digit, initialize_roman_digit_with_i_or_I_returns_symbol_I_value_1);
+   tcase_add_test(tc_roman_digit, initialize_roman_digit_with_v_or_V_returns_symbol_V_value_5);
 
    suite_add_tcase(testSuite, tc_roman_digit);
 

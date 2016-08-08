@@ -4,11 +4,23 @@
 
 #include "RomanNumberMath.h"
 
-RomanDigit newRomanDigit(char c) {
-   RomanDigit rd;
+#define NUMDIGITS 2
 
-   rd.Symbol = toupper(c);
-   rd.Value = 1;
+RomanDigit allowedDigits[NUMDIGITS] = {
+   {'I', 1},
+   {'V', 5}
+};
+
+RomanDigit newRomanDigit(char c) {
+   RomanDigit rd = {'N', 0};
+   int idx;
+
+   for (idx =  0; idx < NUMDIGITS; idx++) {
+      if (allowedDigits[idx].Symbol == toupper(c)) {
+         rd = allowedDigits[idx];
+         break;
+      }
+   }
 
    return rd;
 }
