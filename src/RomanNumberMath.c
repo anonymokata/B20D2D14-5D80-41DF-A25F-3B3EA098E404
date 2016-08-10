@@ -35,6 +35,7 @@ RomanNumber newRomanNumber(char *number) {
    RomanNumber returnValue;
    int idx;
 
+   returnValue.Size = 0;
    for (idx = 0; number[idx] != '\0'; idx++) {
       RomanDigit rd = newRomanDigit(number[idx]);
 
@@ -109,4 +110,20 @@ void rnRemoveSubtractive(RomanNumber *number) {
    for (idx = 0; idx < number->Size; idx++) number->Digit[idx] = newValue.Digit[idx];
 
    return;
+}
+
+RomanNumber rnConcatinate(RomanNumber first, RomanNumber second) {
+   RomanNumber returnValue;
+   int idx;
+
+
+   returnValue.Size = first.Size + second.Size;
+
+   for (idx = 0; idx < first.Size; idx++)
+      returnValue.Digit[idx] = first.Digit[idx];
+
+   for (idx = 0; idx < second.Size; idx++)
+      returnValue.Digit[first.Size + idx] = second.Digit[idx];
+
+   return returnValue;
 }

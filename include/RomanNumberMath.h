@@ -20,5 +20,6 @@ uint32_t to_a(RomanNumber);
 char *to_string(RomanNumber);
 
 void rnRemoveSubtractive(RomanNumber *);
+RomanNumber rnConcatinate(RomanNumber, RomanNumber);
 
 #endif

@@ -310,9 +310,23 @@ START_TEST(substitute_for_any_subtractives_complex_subtractive_value) {
    ck_assert_str_eq("MDCCCCLXXXXVIIII", to_string(rn));
 } END_TEST
 
+/*******************************************************************************
+ * Concatinate digits of two values into one new one                           *
+ ******************************************************************************/
+
+/******** Create a function to create one value from the digits of two ********/
+START_TEST(concatinate_all_the_digits_of_two_numbers_into_a_new_value) {
+   RomanNumber rnFirst = newRomanNumber("MDC");
+   RomanNumber rnSecond = newRomanNumber("LXVI");
+
+   RomanNumber concat = rnConcatinate(rnFirst, rnSecond);
+
+   ck_assert_str_eq("MDCLXVI", to_string(concat));
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
-   TCase *tc_roman_digit, *tc_roman_number, *tc_debug, *tc_remove_sub;
+   TCase *tc_roman_digit, *tc_roman_number, *tc_debug, *tc_remove_sub, *tc_concat;
 
    testSuite = suite_create("Roman Math 2");
 
@@ -369,6 +383,13 @@ Suite * roman_number_math_suite(void) {
    tcase_add_test(tc_remove_sub, substitute_for_any_subtractives_complex_subtractive_value);
    
    suite_add_tcase(testSuite, tc_remove_sub);
+
+   /* Testing Debug/Display functions */
+   tc_concat= tcase_create("Remove Subtractive Notation");
+
+   tcase_add_test(tc_concat, concatinate_all_the_digits_of_two_numbers_into_a_new_value);
+
+   suite_add_tcase(testSuite, tc_concat);
 
    return testSuite;
 }
