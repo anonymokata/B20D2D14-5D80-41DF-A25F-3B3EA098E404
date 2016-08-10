@@ -324,7 +324,7 @@ START_TEST(concatinate_all_the_digits_of_two_numbers_into_a_new_value) {
    ck_assert_str_eq("MDCLXVI", to_string(concat));
 } END_TEST
 
-/******** Create a function to create one value from the digits of two ********/
+/********************** Combine two single digit values ***********************/
 START_TEST(concatinate_all_the_digits_two_single_digit_values) {
    RomanNumber rnFirst = newRomanNumber("I");
    RomanNumber rnSecond = newRomanNumber("I");
@@ -332,6 +332,16 @@ START_TEST(concatinate_all_the_digits_two_single_digit_values) {
    RomanNumber concat = rnConcatinate(rnFirst, rnSecond);
 
    ck_assert_str_eq("II", to_string(concat));
+} END_TEST
+
+/***************** Combine a single digit to multiple digits ******************/
+START_TEST(concatinate_all_the_digits_of_a_single_and_double_digit_value) {
+   RomanNumber rnFirst = newRomanNumber("I");
+   RomanNumber rnSecond = newRomanNumber("VI");
+
+   RomanNumber concat = rnConcatinate(rnFirst, rnSecond);
+
+   ck_assert_str_eq("IVI", to_string(concat));
 } END_TEST
 
 Suite * roman_number_math_suite(void) {
@@ -399,6 +409,7 @@ Suite * roman_number_math_suite(void) {
 
    tcase_add_test(tc_concat, concatinate_all_the_digits_of_two_numbers_into_a_new_value);
    tcase_add_test(tc_concat, concatinate_all_the_digits_two_single_digit_values);
+   tcase_add_test(tc_concat, concatinate_all_the_digits_of_a_single_and_double_digit_value);
 
    suite_add_tcase(testSuite, tc_concat);
 
