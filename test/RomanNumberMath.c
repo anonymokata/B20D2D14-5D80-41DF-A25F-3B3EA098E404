@@ -291,6 +291,16 @@ START_TEST(substitute_for_any_subtractives_simple_subtractive_value) {
    ck_assert_str_eq("IIII", to_string(rn));
 } END_TEST
 
+/********* Testing Remove Subtractive with static and changing values *********/
+/** Also testing subtractive value two values above subtractor instead of one */
+START_TEST(substitute_for_any_subtractives_with_changing_and_nonchanging_values) {
+   RomanNumber rn = newRomanNumber("XIX");
+
+   rnRemoveSubtractive(&rn);
+
+   ck_assert_str_eq("XVIIII", to_string(rn));
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
    TCase *tc_roman_digit, *tc_roman_number, *tc_debug, *tc_remove_sub;
@@ -346,6 +356,7 @@ Suite * roman_number_math_suite(void) {
    tcase_add_test(tc_remove_sub, substitute_for_any_subtractives_in_value);
    tcase_add_test(tc_remove_sub, substitute_for_any_subtractives_single_digit_value);
    tcase_add_test(tc_remove_sub, substitute_for_any_subtractives_simple_subtractive_value);
+   tcase_add_test(tc_remove_sub, substitute_for_any_subtractives_with_changing_and_nonchanging_values);
    
    suite_add_tcase(testSuite, tc_remove_sub);
 
