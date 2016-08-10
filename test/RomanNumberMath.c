@@ -354,6 +354,16 @@ START_TEST(concatinate_all_the_digits_of_a_single_and_nonstandard_value) {
    ck_assert_str_eq("IXVIIII", to_string(concat));
 } END_TEST
 
+/***** Concatenate multi-digit value to a non-standardized complex value ******/
+START_TEST(concatinate_all_the_digits_of_a_multidigit_and_complex_value) {
+   RomanNumber rnFirst = newRomanNumber("VI");
+   RomanNumber rnSecond = newRomanNumber("MDCCCCLXXXXVIIII");
+
+   RomanNumber concat = rnConcatinate(rnFirst, rnSecond);
+
+   ck_assert_str_eq("VIMDCCCCLXXXXVIIII", to_string(concat));
+} END_TEST
+
 Suite * roman_number_math_suite(void) {
    Suite *testSuite;
    TCase *tc_roman_digit, *tc_roman_number, *tc_debug, *tc_remove_sub, *tc_concat;
@@ -421,6 +431,7 @@ Suite * roman_number_math_suite(void) {
    tcase_add_test(tc_concat, concatinate_all_the_digits_two_single_digit_values);
    tcase_add_test(tc_concat, concatinate_all_the_digits_of_a_single_and_double_digit_value);
    tcase_add_test(tc_concat, concatinate_all_the_digits_of_a_single_and_nonstandard_value);
+   tcase_add_test(tc_concat, concatinate_all_the_digits_of_a_multidigit_and_complex_value);
 
    suite_add_tcase(testSuite, tc_concat);
 
