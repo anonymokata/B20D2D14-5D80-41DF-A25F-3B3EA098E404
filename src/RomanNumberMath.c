@@ -53,6 +53,9 @@ RomanNumber newRomanNumber(char *number) {
       }
    }
 
+   /* Add a Nulle Value on the end to embark zero value in calculations */
+   returnValue.Digit[returnValue.Size].Symbol = 'N';
+   returnValue.Digit[returnValue.Size].Value = 0;
    return returnValue;
 }
 
@@ -81,5 +84,29 @@ char *to_string(RomanNumber number) {
 }
 
 void rnRemoveSubtractive(RomanNumber *number) {
+   RomanNumber newValue;
+   int idx, idx2, targetValue;
+
+   newValue.Size = 0;
+   for (idx = 0; idx < number->Size; idx++) {
+      if (number->Digit[idx].Value > number->Digit[idx+1].Value) {
+         newValue.Digit[newValue.Size++] = number->Digit[idx];
+      } else {
+         targetValue = number->Digit[idx+1].Value + number->Digit[idx].Value;
+
+         for (idx2 = NUMDIGITS-1; idx2 >= 0; idx2--) {
+            while (targetValue >= allowedDigits[idx2].Value) {
+               newValue.Digit[newValue.Size++] = allowedDigits[idx2];
+               targetValue -= allowedDigits[idx2].Value;
+            }
+         }
+
+         idx++;
+      }
+   }
+
+   number->Size = newValue.Size;
+   for (idx = 0; idx < number->Size; idx++) number->Digit[idx] = newValue.Digit[idx];
+
    return;
 }
