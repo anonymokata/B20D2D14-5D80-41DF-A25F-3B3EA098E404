@@ -237,22 +237,22 @@ START_TEST(roman_numberal_to_string_function) {
    ck_assert_str_eq("IIIIIII", to_string(rn));
 } END_TEST
 
-/* Testing "to_string()" with single digit value */
+/*************** Testing "to_string()" with single digit value ****************/
 START_TEST(roman_numberal_to_string_single_digit) {
    ck_assert_str_eq("I", to_string(newRomanNumber("i")));
 } END_TEST
 
-/* Testing "to_string()" with multi-digit value */
+/**************** Testing "to_string()" with multi-digit value ****************/
 START_TEST(roman_numberal_to_string_multi_digit) {
    ck_assert_str_eq("VI", to_string(newRomanNumber("vi")));
 } END_TEST
 
-/* Testing "to_string()" with subtractive notation value */
+/*********** Testing "to_string()" with subtractive notation value ************/
 START_TEST(roman_numberal_to_string_with_subtractive_notation) {
    ck_assert_str_eq("XIX", to_string(newRomanNumber("xix")));
 } END_TEST
 
-/* Testing "to_string()" with complex value */
+/****************** Testing "to_string()" with complex value ******************/
 START_TEST(roman_numberal_to_string_with_complex_value) {
    ck_assert_str_eq("MCMXCIX", to_string(newRomanNumber("mcmxcix")));
 } END_TEST
@@ -261,6 +261,7 @@ START_TEST(roman_numberal_to_string_with_complex_value) {
  * Substitute for any subtractives in value                                    *
  ******************************************************************************/
 
+/******* Create a function to rewrite value into additive only notation *******/
 START_TEST(substitute_for_any_subtractives_in_value) {
    RomanNumber rn = newRomanNumber("MDCLXVI");
    char *before, *after;
@@ -270,6 +271,15 @@ START_TEST(substitute_for_any_subtractives_in_value) {
    after = to_string(rn);
 
    ck_assert_str_eq(before, after);
+} END_TEST
+
+/*** A single digit can not be out of order, so it should not change value ****/
+START_TEST(substitute_for_any_subtractives_single_digit_value) {
+   RomanNumber rn = newRomanNumber("I");
+
+   rnRemoveSubtractive(&rn);
+
+   ck_assert_str_eq("I", to_string(rn));
 } END_TEST
 
 Suite * roman_number_math_suite(void) {
@@ -325,6 +335,7 @@ Suite * roman_number_math_suite(void) {
    tc_remove_sub = tcase_create("Remove Subtractive Notation");
 
    tcase_add_test(tc_remove_sub, substitute_for_any_subtractives_in_value);
+   tcase_add_test(tc_remove_sub, substitute_for_any_subtractives_single_digit_value);
    
    suite_add_tcase(testSuite, tc_remove_sub);
 
